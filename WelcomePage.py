@@ -19,9 +19,9 @@ class Root(CTk):
         self.FRAME0.pack(fill="y", anchor="center", expand=0, ipadx=0, ipady=0, padx=0, pady=0, side="left")
         self.LABEL3 = CTkLabel(master=self.FRAME0, text="Custom Tkinter\nBuilder", compound="left", justify="left", image=CTkImage(Image.open(resource_path("Logo-WelcomePage.png")), size=(96, 96)), text_color=['#0d0c1d', '#f1f0ea'], font=CTkFont(family="SF Display", size=25))
         self.LABEL3.pack(pady=['20', 30], anchor="center", expand=0, fill="none", ipadx=0, ipady=0, side="top")
-        self.BUTTON4 = CTkButton(master=self.FRAME0, text="     Projects", height=40, anchor="w", corner_radius=0, fg_color=['#cf245e', '#cf245e'], hover_color=['#ae1d4f', '#ae1d4f'], text_color=['#f1f0ea', '#f1f0ea'], font=CTkFont(family="SF Display", size=20))
+        self.BUTTON4 = CTkButton(master=self.FRAME0, text="     项目", height=40, anchor="w", corner_radius=0, fg_color=['#cf245e', '#cf245e'], hover_color=['#ae1d4f', '#ae1d4f'], text_color=['#f1f0ea', '#f1f0ea'], font=CTkFont(family="SF Display", size=20))
         self.BUTTON4.pack(fill="x", anchor="center", expand=0, ipadx=0, ipady=0, padx=0, pady=0, side="top")
-        self.BUTTON6_copy = CTkButton(master=self.FRAME0, text="     Customize", height=40, anchor="w", corner_radius=0, fg_color="transparent", hover_color=['#ae1d4f', '#ae1d4f'], text_color=['#0d0c1d', '#f1f0ea'], font=CTkFont(family="SF Display", size=20))
+        self.BUTTON6_copy = CTkButton(master=self.FRAME0, text="     自定义", height=40, anchor="w", corner_radius=0, fg_color="transparent", hover_color=['#ae1d4f', '#ae1d4f'], text_color=['#0d0c1d', '#f1f0ea'], font=CTkFont(family="SF Display", size=20))
         #self.BUTTON6_copy.pack(fill="x", anchor="center", expand=0, ipadx=0, ipady=0, padx=0, pady=0, side="top")
         self.FRAME3_copy = CTkFrame(master=self, width=300, fg_color=['#e0ddcf', '#161b33'])
         self.FRAME3_copy.pack_propagate(False)
@@ -36,13 +36,13 @@ class Root(CTk):
         self.LABEL8 = CTkLabel(master=self.FRAME7, text="", image=CTkImage(Image.open(resource_path("Assets/baseline_search_white_24dp_1x.png")), size=(24, 24)), font=CTkFont(family="SF Display"))
         self.LABEL8.pack(padx=[10, '0'], anchor="center", expand=0, fill="none", ipadx=0, ipady=0, pady=0, side="left")
         self.var = StringVar()
-        self.var.set("Search Projects")
-        self.ENTRY9 = CTkEntry(master=self.FRAME7, placeholder_text="Search Projects", fg_color=['#e0ddcf', '#161b33'], border_width=0, text_color=['#0d0c1d', '#f1f0ea'], placeholder_text_color=['#161b33', '#e0ddcf'], font=CTkFont(family="SF Display", size=14), textvariable=self.var)
+        self.var.set("搜索项目…")
+        self.ENTRY9 = CTkEntry(master=self.FRAME7, placeholder_text="搜索项目", fg_color=['#e0ddcf', '#161b33'], border_width=0, text_color=['#0d0c1d', '#f1f0ea'], placeholder_text_color=['#161b33', '#e0ddcf'], font=CTkFont(family="SF Display", size=14), textvariable=self.var)
         self.ENTRY9.pack(padx=['10', 10], anchor="center", expand=1, fill="x", ipadx=0, ipady=0, pady=0, side="left")
         self.var.trace_add("write", self.search)
-        self.BUTTON10 = CTkButton(master=self.FRAME6, text="New Project", corner_radius=3, fg_color=['#cf245e', '#cf245e'], hover_color=['#ae1d4f', '#ae1d4f'], text_color=['gray98', '#f1f0ea'], font=CTkFont(family="SF Display", size=14), command=lambda: SaveFileDialog(callback=self.create_project, theme=True))
+        self.BUTTON10 = CTkButton(master=self.FRAME6, text="新项目", corner_radius=3, fg_color=['#cf245e', '#cf245e'], hover_color=['#ae1d4f', '#ae1d4f'], text_color=['gray98', '#f1f0ea'], font=CTkFont(family="SF Display", size=14), command=lambda: SaveFileDialog(callback=self.create_project, theme=True))
         self.BUTTON10.pack(padx=[5, '5'], anchor="center", expand=0, fill="none", ipadx=0, ipady=0, pady=0, side="left")
-        self.BUTTON13_copy = CTkButton(master=self.FRAME6, text="Open", corner_radius=3, fg_color=['#cf245e', '#cf245e'], hover_color=['#ae1d4f', '#ae1d4f'], text_color=['gray98', '#f1f0ea'], width=90, font=CTkFont(family="SF Display", size=14), command=self.open_project_from_disk)
+        self.BUTTON13_copy = CTkButton(master=self.FRAME6, text="打开", corner_radius=3, fg_color=['#cf245e', '#cf245e'], hover_color=['#ae1d4f', '#ae1d4f'], text_color=['gray98', '#f1f0ea'], width=90, font=CTkFont(family="SF Display", size=14), command=self.open_project_from_disk)
         self.BUTTON13_copy.pack(padx=['5', 10], anchor="center", expand=0, fill="none", ipadx=0, ipady=0, pady=0, side="left")
 
         self.FRAME20_copy = CTkScrollableFrame(master=self.FRAME3_copy, width=300, fg_color=['#e0ddcf', '#161b33'])
@@ -59,7 +59,7 @@ class Root(CTk):
         app.focus_get()
 
         def on_closing(command=None):
-            msg = messagebox.askyesno("Quit", "Save changes before closing?")
+            msg = messagebox.askyesno("退出", "在关闭前保存更改吗？")
             print(app.main.widgets)
             if msg:
                 app.main.save_file()

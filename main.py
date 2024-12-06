@@ -66,24 +66,24 @@ class SaveFileDialog(CTkToplevel):
 
         if theme:
             self.geometry("500x380+600+200")
-            self.title("New Project")
+            self.title("新项目")
 
         else:
             self.geometry("500x280+600+200")
-            self.title("Save as project")
+            self.title("项目另存")
 
 
-        self.project_name_lbl = CTkLabel(self, text="Project Name", anchor="w", padx=5, font=CTkFont(size=20))
+        self.project_name_lbl = CTkLabel(self, text="项目名", anchor="w", padx=5, font=CTkFont(size=20))
         self.project_name_lbl.pack(pady=(20, 0), padx=20, fill="x")
 
-        self.project_name_entry = CTkEntry(self, placeholder_text="Enter Project Name")
+        self.project_name_entry = CTkEntry(self, placeholder_text="输入项目名")
         self.project_name_entry.pack(padx=20, pady=10, fill="x")
         self.project_name_entry.insert(0, "Untitled")
 
         self.fr = CTkFrame(self, fg_color="transparent")
         self.fr.pack(fill="x")
 
-        self.dir_lbl = CTkLabel(self.fr, text="Location", anchor="w", padx=5, font=CTkFont(size=20))
+        self.dir_lbl = CTkLabel(self.fr, text="路径", anchor="w", padx=5, font=CTkFont(size=20))
         self.dir_lbl.pack(pady=(20, 10), padx=20, fill="x")
 
         self.dir_entry = CTkEntry(self.fr)
@@ -98,18 +98,18 @@ class SaveFileDialog(CTkToplevel):
             self.f = CTkFrame(self, fg_color="transparent")
             self.f.pack(fill="x")
 
-            self.theme_lbl = CTkLabel(self.f, text="Theme", anchor="w", padx=5, font=CTkFont(size=20))
+            self.theme_lbl = CTkLabel(self.f, text="主题", anchor="w", padx=5, font=CTkFont(size=20))
             self.theme_lbl.pack(pady=(20, 10), padx=20, fill="x")
 
             self.theme_entry = CTkOptionMenu(self.f, values=["green", "blue", "dark-blue"])
             self.theme_entry.pack(padx=20, pady=(0, 20), fill="x", side="left", expand=True)
 
-            self.save_btn = CTkButton(self, text="Save", height=35, command=lambda: (
+            self.save_btn = CTkButton(self, text="保存", height=35, command=lambda: (
             self.callback(dir_=self.dir_entry.get(), name=self.project_name_entry.get(), theme=self.theme_entry.get()), self.destroy()))
             self.save_btn.pack(fill="x", padx=20, pady=20)
 
         else:
-            self.save_btn = CTkButton(self, text="Save", height=35, command=lambda: (self.callback(dir_=self.dir_entry.get(), name=self.project_name_entry.get()), self.destroy()))
+            self.save_btn = CTkButton(self, text="保存", height=35, command=lambda: (self.callback(dir_=self.dir_entry.get(), name=self.project_name_entry.get()), self.destroy()))
             self.save_btn.pack(fill="x", padx=20, pady=20)
 
     def choose_dir(self):
@@ -327,11 +327,11 @@ root.mainloop()
         self.codeviewer.configure(wrap="none")
         self.codeviewer.pack(expand=True, fill="both", padx=20, pady=20)
 
-        self.oop_code_switch = CTkSwitch(top, text="OOP Code", command=self.change_oop)
+        self.oop_code_switch = CTkSwitch(top, text="面向对象编程", command=self.change_oop)
         self.oop_code_switch.pack(side="left", padx=20, pady=(0, 20))
         self.oop_code_switch.select()
 
-        exp_btn = CTkButton(top, text="Export Code", command=lambda: self.export(self.current.get_code()))
+        exp_btn = CTkButton(top, text="导出代码", command=lambda: self.export(self.current.get_code()))
         exp_btn.pack(side="right", padx=20, pady=(0, 20))
 
         self.current = oop_code
@@ -551,7 +551,7 @@ for x in {x.get_name()}._buttons_dict.values():
     def changed_value(self, a, b, c):
         try:
             if (self.widgetnumber.get()-1) == self.current_widget_count.get():
-                self.edit_lbl.configure(text="Updating Hierarchy....")
+                self.edit_lbl.configure(text="正在更新层次结构...")
             self.lbl2.configure(text=f"{self.current_widget_count.get()}/{self.widgetnumber.get()}")
             self.progressbar.step()
         except Exception:
@@ -582,7 +582,7 @@ for x in {x.get_name()}._buttons_dict.values():
         frm.pack_propagate(False)
         txt_frame = CTkFrame(frm, fg_color="transparent")
         txt_frame.pack(pady=1, fill="x", expand=True, padx=100)
-        self.edit_lbl = CTkLabel(txt_frame, text="Creating Editable Widgets....", font=CTkFont(size=15))
+        self.edit_lbl = CTkLabel(txt_frame, text="创建可编辑小部件...", font=CTkFont(size=15))
         self.edit_lbl.pack(side="left")
         self.lbl2 = CTkLabel(txt_frame, text=f"0/{self.widgetnumber.get()}", font=CTkFont(size=15))
         self.lbl2.pack(side="right")
@@ -1762,10 +1762,10 @@ class PaletteEditor(CTkToplevel):
         self.frame2 = CTkFrame(self)
         self.frame2.pack(fill="x", padx=10, pady=(10, 5))
 
-        self.name_entry = CTkEntry(self.frame2, placeholder_text="Enter Name")
+        self.name_entry = CTkEntry(self.frame2, placeholder_text="输入名称")
         self.name_entry.pack(side="left", fill="x", expand=True, padx=(10, 0), pady=5)
 
-        self.add_btn = CTkButton(self.frame2, text="Add", width=50, command=self.add)
+        self.add_btn = CTkButton(self.frame2, text="添加", width=50, command=self.add)
         self.add_btn.pack(side="left", padx=10)
 
         self.fr = CTkFrame(self)
@@ -1946,25 +1946,25 @@ class App(CTkToplevel):
         self.home_btn.pack(side="left", padx=5, pady=5)
         #self.home_btn.configure(image=self.home_btn.image)
 
-        self.save_btn = CTkButton(self.tool_bar, text="Save", fg_color="transparent", width=50)
+        self.save_btn = CTkButton(self.tool_bar, text="保存", fg_color="transparent", width=50)
         self.save_btn.pack(side="left", padx=5, pady=5)
 
-        self.saveas_btn = CTkButton(self.tool_bar, text="Save As", fg_color="transparent", width=50)
+        self.saveas_btn = CTkButton(self.tool_bar, text="另存为", fg_color="transparent", width=50)
         self.saveas_btn.pack(side="left", padx=5, pady=5)
 
-        self.open_btn = CTkButton(self.tool_bar, text="Open", fg_color="transparent", width=50)
+        self.open_btn = CTkButton(self.tool_bar, text="打开", fg_color="transparent", width=50)
         #self.open_btn.pack(side="left", padx=5, pady=5)
 
-        self.run_code_btn = CTkButton(self.tool_bar, text="Run Code", fg_color="transparent", width=50)
+        self.run_code_btn = CTkButton(self.tool_bar, text="运行", fg_color="transparent", width=50)
         self.run_code_btn.pack(side="left", padx=5, pady=5)
 
-        self.export_code_btn = CTkButton(self.tool_bar, text="Export Code", fg_color="transparent", width=50)
+        self.export_code_btn = CTkButton(self.tool_bar, text="导出代码", fg_color="transparent", width=50)
         self.export_code_btn.pack(side="left", padx=5, pady=5)
 
-        self.palette_btn = CTkButton(self.tool_bar, text="Edit Palette", fg_color="transparent", width=50)
+        self.palette_btn = CTkButton(self.tool_bar, text="编辑调色板", fg_color="transparent", width=50)
         self.palette_btn.pack(side="left", padx=5, pady=5)
 
-        self.appearance_mode_switch = CTkSwitch(self.tool_bar, text="Dark Mode", border_color=("#CF245E", "#CF245E"), text_color="white")
+        self.appearance_mode_switch = CTkSwitch(self.tool_bar, text="暗色模式", border_color=("#CF245E", "#CF245E"), text_color="white")
         self.appearance_mode_switch.pack(side="left", padx=5, pady=5)
         if darkdetect.isDark():
             self.appearance_mode_switch.toggle()
@@ -1973,14 +1973,14 @@ class App(CTkToplevel):
         self.widget_panel = CTkTabview(self, width=350)
         self.widget_panel.pack(side=LEFT, padx=10, pady=(0, 10), fill="y")
         self.widget_panel.dragndrop_list = []
-        self.widget_panel.add("Core Widgets")
-        self.widget_panel.add("Themed Widgets")
+        self.widget_panel.add("核心小组件")
+        self.widget_panel.add("主题小部件")
 
         self.widget_panel_resizer = WindowResizer(self, orientation="vertical", widget=self.widget_panel)
         self.widget_panel_resizer.pack(side="left", fill="y")
 
-        self.widget_panel_core_tab = self.widget_panel.tab("Core Widgets")
-        self.widget_panel_themed_tab = self.widget_panel.tab("Themed Widgets")
+        self.widget_panel_core_tab = self.widget_panel.tab("核心小组件")
+        self.widget_panel_themed_tab = self.widget_panel.tab("主题小部件")
 
         self.widget_panel_core = CTkScrollableFrame(self.widget_panel_core_tab, fg_color="transparent")
         self.widget_panel_core.pack(padx=(0, 5), pady=5, fill="both", expand=True)
@@ -1988,16 +1988,16 @@ class App(CTkToplevel):
         self.widget_panel_themed = CTkScrollableFrame(self.widget_panel_themed_tab, fg_color="transparent")
         self.widget_panel_themed.pack(padx=(0, 5), pady=5, fill="both", expand=True)
 
-        self.add_frame_btn = WidgetButton(master=self.widget_panel_core, text="Frame", height=50,
+        self.add_frame_btn = WidgetButton(master=self.widget_panel_core, text="子类窗体", height=50,
                                           on_drag=lambda x, y, widget: self.main.add_widget(Frame, properties={"properties":self.properties_panel}, x=x, y=y, widget=widget))
         self.add_frame_btn.pack(padx=10, pady=(10, 0), fill="x")
 
 
 
-        self.add_vert_scrl_frame_btn = WidgetButton(master=self.widget_panel_core, text="Vertical Scrollable Frame", height=50, on_drag=lambda x, y, widget: self.main.add_widget(ScrollableFrame, properties={"properties":self.properties_panel, "orientation": "vertical"}, x=x, y=y, widget=widget))
+        self.add_vert_scrl_frame_btn = WidgetButton(master=self.widget_panel_core, text="垂直滚动框架", height=50, on_drag=lambda x, y, widget: self.main.add_widget(ScrollableFrame, properties={"properties":self.properties_panel, "orientation": "vertical"}, x=x, y=y, widget=widget))
         self.add_vert_scrl_frame_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_horiz_scrl_frame_btn = WidgetButton(master=self.widget_panel_core, text="Horizontal Scrollable Frame", height=50,
+        self.add_horiz_scrl_frame_btn = WidgetButton(master=self.widget_panel_core, text="水平滚动框架", height=50,
                                                on_drag=lambda x, y, widget: self.main.add_widget(ScrollableFrame,
                                                                                                  properties={
                                                                                                      "properties": self.properties_panel,
@@ -2006,23 +2006,23 @@ class App(CTkToplevel):
                                                                                                  widget=widget))
         self.add_horiz_scrl_frame_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_label_btn = WidgetButton(master=self.widget_panel_core, text="Label", height=50, on_drag=lambda x, y, widget: self.main.add_widget(Label, properties={"properties":self.properties_panel}, x=x, y=y, widget=widget))
+        self.add_label_btn = WidgetButton(master=self.widget_panel_core, text="标签", height=50, on_drag=lambda x, y, widget: self.main.add_widget(Label, properties={"properties":self.properties_panel}, x=x, y=y, widget=widget))
         self.add_label_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_button_btn = WidgetButton(master=self.widget_panel_core, text="Button", height=50, on_drag=lambda x, y, widget: self.main.add_widget(Button, properties={"properties":self.properties_panel}, x=x, y=y, widget=widget))
+        self.add_button_btn = WidgetButton(master=self.widget_panel_core, text="按钮", height=50, on_drag=lambda x, y, widget: self.main.add_widget(Button, properties={"properties":self.properties_panel}, x=x, y=y, widget=widget))
         self.add_button_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_entry_btn = WidgetButton(master=self.widget_panel_core, text="Entry", height=50,
+        self.add_entry_btn = WidgetButton(master=self.widget_panel_core, text="输入框", height=50,
                                           on_drag=lambda x, y, widget: self.main.add_widget(Entry, properties={"properties":self.properties_panel}, x=x, y=y, widget=widget))
         self.add_entry_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_switch_btn = WidgetButton(master=self.widget_panel_core, text="Switch", height=50,
+        self.add_switch_btn = WidgetButton(master=self.widget_panel_core, text="开关", height=50,
                                           on_drag=lambda x, y, widget: self.main.add_widget(Switch, properties={
                                               "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_switch_btn.pack(padx=10, pady=(10, 0), fill="x")
 
 
-        self.add_checkbox_btn = WidgetButton(master=self.widget_panel_core, text="Check Box", height=50,
+        self.add_checkbox_btn = WidgetButton(master=self.widget_panel_core, text="复选框", height=50,
                                                on_drag=lambda x, y, widget: self.main.add_widget(CheckBox,
                                                                                                  properties={
                                                                                                      "properties": self.properties_panel},
@@ -2030,7 +2030,7 @@ class App(CTkToplevel):
                                                                                                  widget=widget))
         self.add_checkbox_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_radiobutton_btn = WidgetButton(master=self.widget_panel_core, text="Radio Button", height=50,
+        self.add_radiobutton_btn = WidgetButton(master=self.widget_panel_core, text="单选框", height=50,
                                              on_drag=lambda x, y, widget: self.main.add_widget(RadioButton,
                                                                                                properties={
                                                                                                    "properties": self.properties_panel},
@@ -2041,7 +2041,7 @@ class App(CTkToplevel):
 
 
 
-        self.add_horizontalslider_btn = WidgetButton(master=self.widget_panel_core, text="Horizontal Slider", height=50,
+        self.add_horizontalslider_btn = WidgetButton(master=self.widget_panel_core, text="垂直滑块", height=50,
                                                on_drag=lambda x, y, widget: self.main.add_widget(Slider,
                                                                                                  properties={
                                                                                                      "properties": self.properties_panel, "orientation": "horizontal"},
@@ -2049,14 +2049,14 @@ class App(CTkToplevel):
                                                                                                  widget=widget))
         self.add_horizontalslider_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_verticalslider_btn = WidgetButton(master=self.widget_panel_core, text="Vertical Slider", height=50,
+        self.add_verticalslider_btn = WidgetButton(master=self.widget_panel_core, text="水平滑块", height=50,
                                            on_drag=lambda x, y, widget: self.main.add_widget(Slider,
                                                                                              properties={
                                                                                                  "properties": self.properties_panel, "orientation": "vertical"},
                                                                                              x=x, y=y,
                                                                                              widget=widget))
         self.add_verticalslider_btn.pack(padx=10, pady=(10, 0), fill="x")
-        self.add_combobox_btn = WidgetButton(master=self.widget_panel_core, text="Combo Box", height=50,
+        self.add_combobox_btn = WidgetButton(master=self.widget_panel_core, text="组合框", height=50,
                                                       on_drag=lambda x, y, widget: self.main.add_widget(ComboBox,
                                                                                                         properties={
                                                                                                             "properties": self.properties_panel},
@@ -2064,7 +2064,7 @@ class App(CTkToplevel):
                                                                                                         widget=widget))
         self.add_combobox_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_optionmenu_btn = WidgetButton(master=self.widget_panel_core, text="Option Menu", height=50,
+        self.add_optionmenu_btn = WidgetButton(master=self.widget_panel_core, text="下拉选项菜单", height=50,
                                                on_drag=lambda x, y, widget: self.main.add_widget(OptionMenu,
                                                                                                  properties={
                                                                                                      "properties": self.properties_panel},
@@ -2072,12 +2072,12 @@ class App(CTkToplevel):
                                                                                                  widget=widget))
         self.add_optionmenu_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_progressbar_btn = WidgetButton(master=self.widget_panel_core, text="Progress Bar", height=50,
+        self.add_progressbar_btn = WidgetButton(master=self.widget_panel_core, text="进度条", height=50,
                                           on_drag=lambda x, y, widget: self.main.add_widget(ProgressBar, properties={
                                               "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_progressbar_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_segmentedbutton_btn = WidgetButton(master=self.widget_panel_core, text="Segmented Button", height=50,
+        self.add_segmentedbutton_btn = WidgetButton(master=self.widget_panel_core, text="分段按钮", height=50,
                                                     on_drag=lambda x, y, widget: self.main.add_widget(SegmentedButton,
                                                                                                       properties={
                                                                                                           "properties": self.properties_panel},
@@ -2085,12 +2085,12 @@ class App(CTkToplevel):
                                                                                                       widget=widget))
         self.add_segmentedbutton_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_textbox_btn = WidgetButton(master=self.widget_panel_core, text="TextBox", height=50,
+        self.add_textbox_btn = WidgetButton(master=self.widget_panel_core, text="文本框", height=50,
                                           on_drag=lambda x, y, widget: self.main.add_widget(TextBox, properties={
                                               "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_textbox_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_horizontalscrollbar_btn = WidgetButton(master=self.widget_panel_core, text="Horizontal Scrollbar", height=50,
+        self.add_horizontalscrollbar_btn = WidgetButton(master=self.widget_panel_core, text="水平滚动条", height=50,
                                                 on_drag=lambda x, y, widget: self.main.add_widget(Scrollbar,
                                                                                                   properties={
                                                                                                       "properties": self.properties_panel, "orientation": "horizontal"},
@@ -2098,7 +2098,7 @@ class App(CTkToplevel):
                                                                                                   widget=widget))
         self.add_horizontalscrollbar_btn.pack(padx=10, pady=(10, 0), fill="x")
 
-        self.add_verticalscrollbar_btn = WidgetButton(master=self.widget_panel_core, text="Vertical Scrollbar", height=50,
+        self.add_verticalscrollbar_btn = WidgetButton(master=self.widget_panel_core, text="垂直滚动条", height=50,
                                               on_drag=lambda x, y, widget: self.main.add_widget(Scrollbar,
                                                                                                 properties={
                                                                                                     "properties": self.properties_panel, "orientation": "vertical"},
@@ -2128,13 +2128,13 @@ class App(CTkToplevel):
         # Themed Widgets
         t = CTkFrame(self.widget_panel_themed)
         t.pack(fill="x")
-        self.add_button_1_btn = WidgetButton(master=t, text="Button 1", height=50,
+        self.add_button_1_btn = WidgetButton(master=t, text="按钮 1", height=50,
                                            on_drag=lambda x, y, widget: self.main.add_widget(ThemedButton.Button_1, properties={
                                                "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_button_1_btn.pack(side="left", fill="x", expand=True, padx=5, pady=(10, 0))
-        self.add_button_1_btn.configure(text="Button 1", width=140, height=38, corner_radius=3, fg_color=("#797979", "#000000"), hover_color=("#4e4e4e", "#434343"), border_color=("#000000", "#a2a2a2"), border_width=1, font=CTkFont(size=15, weight="normal"))
+        self.add_button_1_btn.configure(text="按钮 1", width=140, height=38, corner_radius=3, fg_color=("#797979", "#000000"), hover_color=("#4e4e4e", "#434343"), border_color=("#000000", "#a2a2a2"), border_width=1, font=CTkFont(size=15, weight="normal"))
 
-        self.add_button_2_btn = WidgetButton(master=t, text="Button 2", height=50,
+        self.add_button_2_btn = WidgetButton(master=t, text="按钮 2", height=50,
                                            on_drag=lambda x, y, widget: self.main.add_widget(ThemedButton.Button_2, properties={
                                                "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_button_2_btn.pack(side="right", fill="x", expand=True, padx=5, pady=(10, 0))
@@ -2142,7 +2142,7 @@ class App(CTkToplevel):
         t = CTkFrame(self.widget_panel_themed)
         t.pack(fill="x")
 
-        self.add_button_3_btn = WidgetButton(master=t, text="Button 3", height=50,
+        self.add_button_3_btn = WidgetButton(master=t, text="按钮 3", height=50,
                                            on_drag=lambda x, y, widget: self.main.add_widget(ThemedButton.Button_3, properties={
                                                "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_button_3_btn.pack(fill="x", side="left", expand=True, pady=(10, 0), padx=(5, 0))
@@ -2151,25 +2151,25 @@ class App(CTkToplevel):
         o = CTkFrame(t, width=self.add_button_3_btn.cget("width"), height=50, fg_color="transparent")
         o.pack(fill="x", side="right", expand=True, padx=5, pady=(10, 0))
         o.pack_propagate(False)
-        self.add_icon_white_btn = WidgetButton(master=o, text="Icon White", height=50,
+        self.add_icon_white_btn = WidgetButton(master=o, text="白色图标", height=50,
                                            on_drag=lambda x, y, widget: self.main.add_widget(ThemedButton.Button_Icon_white, properties={
                                                "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_icon_white_btn.pack(side="left", expand=True)
         self.add_icon_white_btn.configure(width=40, height=40, text="", corner_radius=3, fg_color=("#3965FF", "#3965FF"), text_color=("#ffffff", "#ffffff"), hover_color=("#2B4DC6", "#2B4DC6"), border_color=("#3E454A", "#949A9F"), border_width=0, text_color_disabled=("gray78", "gray68"), image=CTkImage(Image.open(resource_path(os.path.join("Assets", "baseline_people_white_18dp_1x.png"))), size=(18, 18)))
 
-        self.add_icon_black_btn = WidgetButton(master=o, text="Icon Black", height=50,
+        self.add_icon_black_btn = WidgetButton(master=o, text="黑色图标", height=50,
                                            on_drag=lambda x, y, widget: self.main.add_widget(ThemedButton.Button_Icon_black, properties={
                                                "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_icon_black_btn.pack(side="right", expand=True)
         self.add_icon_black_btn.configure(width=40, height=40, text="", corner_radius=3, fg_color=("#40B6FF", "#40B6FF"), text_color=("#ffffff", "#ffffff"), hover_color=("#00D9FF", "#00D9FF"), border_color=("#3E454A", "#949A9F"), border_width=0, text_color_disabled=("gray78", "gray68"), image=CTkImage(Image.open(resource_path(os.path.join("Assets", "baseline_people_black_18dp_1x.png"))), size=(18, 18)))
 
-        self.add_heading_1_btn = WidgetButton(master=self.widget_panel_themed, text="Heading 1", height=50,
+        self.add_heading_1_btn = WidgetButton(master=self.widget_panel_themed, text="标题 1", height=50,
                                           on_drag=lambda x, y, widget: self.main.add_widget(ThemedText.Heading_1, properties={
                                               "properties": self.properties_panel}, x=x, y=y, widget=widget))
         self.add_heading_1_btn.pack(padx=5, pady=(10, 0), fill="x")
         self.add_heading_1_btn.configure(text="Heading 1", font=CTkFont(size=45, weight="bold"), border_width=0)
 
-        self.add_heading_2_btn = WidgetButton(master=self.widget_panel_themed, text="Heading 2", height=50,
+        self.add_heading_2_btn = WidgetButton(master=self.widget_panel_themed, text="标题 2", height=50,
                                             on_drag=lambda x, y, widget: self.main.add_widget(ThemedText.Heading_2,
                                                                                               properties={
                                                                                                   "properties": self.properties_panel},
@@ -2178,7 +2178,7 @@ class App(CTkToplevel):
         self.add_heading_2_btn.configure(text="Heading 2", font=CTkFont(size=45, weight="normal"), border_width=0)
 
 
-        self.add_heading_3_btn = WidgetButton(master=self.widget_panel_themed, text="Sub Heading", height=50,
+        self.add_heading_3_btn = WidgetButton(master=self.widget_panel_themed, text="子标题", height=50,
                                               on_drag=lambda x, y, widget: self.main.add_widget(ThemedText.SubHeading,
                                                                                                 properties={
                                                                                                     "properties": self.properties_panel},
@@ -2187,7 +2187,7 @@ class App(CTkToplevel):
         self.add_heading_3_btn.pack(padx=5, pady=(10, 0), fill="x")
         self.add_heading_3_btn.configure(text="Sub Heading", font=CTkFont(size=30, weight="normal"), border_width=0)
 
-        self.add_paragraph_1_btn = WidgetButton(master=self.widget_panel_themed, text="Paragraph 1", height=50,
+        self.add_paragraph_1_btn = WidgetButton(master=self.widget_panel_themed, text="段落 1", height=50,
                                               on_drag=lambda x, y, widget: self.main.add_widget(ThemedText.Paragraph_1,
                                                                                                 properties={
                                                                                                     "properties": self.properties_panel},
@@ -2195,7 +2195,7 @@ class App(CTkToplevel):
                                                                                                 widget=widget))
         self.add_paragraph_1_btn.pack(padx=5, pady=(10, 0), fill="x")
         self.add_paragraph_1_btn.configure(text="I am Paragraph 1", font=CTkFont(size=15, weight="normal"), border_width=0)
-        self.add_wrapped_paragraph_btn = WidgetButton(master=self.widget_panel_themed, text="Wrapped Paragraph", height=50,
+        self.add_wrapped_paragraph_btn = WidgetButton(master=self.widget_panel_themed, text="段落换行", height=50,
                                                 on_drag=lambda x, y, widget: self.main.add_widget(
                                                     ThemedText.WrappedParagraph,
                                                     properties={
@@ -2270,21 +2270,21 @@ class App(CTkToplevel):
         self.hierarchy_tools_container.pack(fill="x", pady=(0, 10))
 
         #FontManager.load_font("Fonts/MaterialIconsOutlined-Regular.otf") # Can't load fonts
-        self.move_top_btn = CTkButton(self.hierarchy_tools_container, text="south", font=("MaterialIconsOutlined-Regular", 22), width=30, height=30, command=self.hierarchy.move_up)
+        self.move_top_btn = CTkButton(self.hierarchy_tools_container, text="南", font=("MaterialIconsOutlined-Regular", 22), width=30, height=30, command=self.hierarchy.move_up)
         self.move_top_btn.pack(side="left", padx=5)
 
-        self.move_down_btn = CTkButton(self.hierarchy_tools_container, text="north", font=("MaterialIconsOutlined-Regular", 22), width=30, height=30, command=self.hierarchy.move_down)
+        self.move_down_btn = CTkButton(self.hierarchy_tools_container, text="北", font=("MaterialIconsOutlined-Regular", 22), width=30, height=30, command=self.hierarchy.move_down)
         self.move_down_btn.pack(side="left", padx=5)
 
-        self.delete_btn = CTkButton(self.hierarchy_tools_container, text="delete", font=("MaterialIconsOutlined-Regular", 22), width=30, height=30, command=self.hierarchy.delete_widget)
+        self.delete_btn = CTkButton(self.hierarchy_tools_container, text="删除", font=("MaterialIconsOutlined-Regular", 22), width=30, height=30, command=self.hierarchy.delete_widget)
         self.delete_btn.pack(side="left", padx=5)
 
-        self.duplicate_btn = CTkButton(self.hierarchy_tools_container, text="content_copy",
+        self.duplicate_btn = CTkButton(self.hierarchy_tools_container, text="复制内容",
                                     font=("MaterialIconsOutlined-Regular", 22), width=30, height=30,
                                     command=self.hierarchy.duplicate_widget)
         self.duplicate_btn.pack(side="left", padx=5)
 
-        self.change_parent_btn = CTkButton(self.hierarchy_tools_container, text="change_circle",
+        self.change_parent_btn = CTkButton(self.hierarchy_tools_container, text="更改圆",
                                        font=("MaterialIconsOutlined-Regular", 22), width=30,
                                        height=30,
                                        command=self.hierarchy.change_parent)
